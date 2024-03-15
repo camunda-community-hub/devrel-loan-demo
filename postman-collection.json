@@ -1,0 +1,162 @@
+{
+  "info": {
+    "name": "devrel loan origination demo",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "loanApplications",
+      "item": [
+        {
+          "name": "get all loan applications",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://{{url}}/api/loanApplications/all"
+          }
+        },
+        {
+          "name": "create loan application",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": "http://{{url}}/api/loanApplications",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"givenName\": \"James\",\n  \"surname\": \"Holden\",\n  \"address\": \"123 Main St.\",\n  \"city\": \"Windmills\",\n  \"stateOrProvince\": \"Montana\",\n  \"country\": \"USA\",\n  \"postalCode\": \"59354\",\n  \"type\": \"HOME\",\n  \"amount\": 220000\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "get all pending loan applications",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://{{url}}/api/loanApplications/pending"
+          }
+        },
+        {
+          "name": "approve loan application",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": "http://{{url}}/api/loanApplications/{{id}}/approve",
+            "body": {
+              "mode": "raw",
+              "raw": "{ }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "reject loan application",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": "http://{{url}}/api/loanApplications/{{id}}/reject",
+            "body": {
+              "mode": "raw",
+              "raw": "{ }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "creditReports",
+      "item": [
+        {
+          "name": "retrieve credit report",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://{{url}}/api/creditReports/{{loanApplicantId}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "riskAssessment",
+      "item": [
+        {
+          "name": "perform risk assessment",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": "http://{{url}}/api/riskAssessment",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"loanApplicationId\": 1,\n  \"creditReportId\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "email",
+      "item": [
+        {
+          "name": "send rejection notification",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": "http://{{url}}/api/email/rejection",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"loanApplicationId\": 1,\n  \"reason\": \"The reason for the rejection\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "url",
+      "value": "",
+      "type": "default"
+    },
+    {
+      "key": "id",
+      "value": "",
+      "type": "default"
+    },
+    {
+      "key": "loanApplicantId",
+      "value": "",
+      "type": "default"
+    }
+  ]
+}

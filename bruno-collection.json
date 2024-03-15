@@ -1,0 +1,302 @@
+{
+  "name": "devrel loan origination demo",
+  "version": "1",
+  "items": [
+    {
+      "type": "folder",
+      "name": "loanApplications",
+      "items": [
+        {
+          "type": "http",
+          "name": "get all loan applications",
+          "seq": 1,
+          "request": {
+            "url": "http://{{url}}/api/loanApplications/all",
+            "method": "GET",
+            "headers": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "auth": {
+              "mode": "none",
+              "basic": {
+                "username": "",
+                "password": ""
+              },
+              "bearer": {
+                "token": ""
+              }
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "query": []
+          }
+        },
+        {
+          "type": "http",
+          "name": "create loan application",
+          "seq": 2,
+          "request": {
+            "url": "http://{{url}}/api/loanApplications",
+            "method": "POST",
+            "headers": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"givenName\": \"James\",\n  \"surname\": \"Holden\",\n  \"address\": \"123 Main St.\",\n  \"city\": \"Windmills\",\n  \"stateOrProvince\": \"Montana\",\n  \"country\": \"USA\",\n  \"postalCode\": \"59354\",\n  \"type\": \"HOME\",\n  \"amount\": 220000\n}",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "auth": {
+              "mode": "none",
+              "basic": {
+                "username": "",
+                "password": ""
+              },
+              "bearer": {
+                "token": ""
+              }
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "query": []
+          }
+        },
+        {
+          "type": "http",
+          "name": "get all pending loan applications",
+          "seq": 3,
+          "request": {
+            "url": "http://{{url}}/api/loanApplications/pending",
+            "method": "GET",
+            "headers": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "auth": {
+              "mode": "none",
+              "basic": {
+                "username": "",
+                "password": ""
+              },
+              "bearer": {
+                "token": ""
+              }
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "query": []
+          }
+        },
+        {
+          "type": "http",
+          "name": "approve loan application",
+          "seq": 4,
+          "request": {
+            "url": "http://{{url}}/api/loanApplications/{{id}}/approve",
+            "method": "POST",
+            "headers": [],
+            "body": {
+              "mode": "json",
+              "json": "{ }",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "auth": {
+              "mode": "none",
+              "basic": {
+                "username": "",
+                "password": ""
+              },
+              "bearer": {
+                "token": ""
+              }
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "query": []
+          }
+        },
+        {
+          "type": "http",
+          "name": "reject loan application",
+          "seq": 5,
+          "request": {
+            "url": "http://{{url}}/api/loanApplications/{{id}}/reject",
+            "method": "POST",
+            "headers": [],
+            "body": {
+              "mode": "json",
+              "json": "{ }",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "auth": {
+              "mode": "none",
+              "basic": {
+                "username": "",
+                "password": ""
+              },
+              "bearer": {
+                "token": ""
+              }
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "query": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "folder",
+      "name": "creditReports",
+      "items": [
+        {
+          "type": "http",
+          "name": "retrieve credit report",
+          "seq": 1,
+          "request": {
+            "url": "http://{{url}}/api/creditReports/{{loanApplicantId}}",
+            "method": "GET",
+            "headers": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "auth": {
+              "mode": "none",
+              "basic": {
+                "username": "",
+                "password": ""
+              },
+              "bearer": {
+                "token": ""
+              }
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "query": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "folder",
+      "name": "riskAssessment",
+      "items": [
+        {
+          "type": "http",
+          "name": "perform risk assessment",
+          "seq": 1,
+          "request": {
+            "url": "http://{{url}}/api/riskAssessment",
+            "method": "POST",
+            "headers": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"loanApplicationId\": 1,\n  \"creditReportId\": 1\n}",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "auth": {
+              "mode": "none",
+              "basic": {
+                "username": "",
+                "password": ""
+              },
+              "bearer": {
+                "token": ""
+              }
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "query": []
+          }
+        }
+      ]
+    },
+    {
+      "type": "folder",
+      "name": "email",
+      "items": [
+        {
+          "type": "http",
+          "name": "send rejection notification",
+          "seq": 1,
+          "request": {
+            "url": "http://{{url}}/api/email/rejection",
+            "method": "POST",
+            "headers": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"loanApplicationId\": 1,\n  \"reason\": \"The reason for the rejection\"\n}",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "auth": {
+              "mode": "none",
+              "basic": {
+                "username": "",
+                "password": ""
+              },
+              "bearer": {
+                "token": ""
+              }
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "query": []
+          }
+        }
+      ]
+    }
+  ],
+  "activeEnvironmentUid": "MbkvbJXUOKMVabPJwsPiO",
+  "environments": [
+    {
+      "variables": [
+        {
+          "name": "url",
+          "value": "devrel-loan-demo-gxcluou4za-uw.a.run.app",
+          "enabled": true,
+          "secret": false,
+          "type": "text"
+        }
+      ],
+      "name": "gcp"
+    },
+    {
+      "variables": [
+        {
+          "name": "url",
+          "value": "localhost:8080",
+          "enabled": true,
+          "secret": false,
+          "type": "text"
+        }
+      ],
+      "name": "localhost"
+    }
+  ]
+}
