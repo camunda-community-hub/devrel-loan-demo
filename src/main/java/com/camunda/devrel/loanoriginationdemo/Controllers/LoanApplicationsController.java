@@ -70,4 +70,16 @@ public class LoanApplicationsController {
 
         return ResponseEntity.ok().body(application);
     }
+
+    @PostMapping("/{id}/reject")
+    public ResponseEntity<LoanApplication> rejectApplication(@PathVariable Long id) {
+        LoanApplication application = loanApplicationService.reject(id);
+        return ResponseEntity.ok().body(application);
+    }
+
+    @PostMapping("/{id}/approve")
+    public ResponseEntity<LoanApplication> approveApplication(@PathVariable Long id) {
+        LoanApplication application = loanApplicationService.approve(id);
+        return ResponseEntity.ok().body(application);
+    }
 }

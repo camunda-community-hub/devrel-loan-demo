@@ -38,9 +38,27 @@ public class LoanApplicationService {
         return application;
     }
 
-    public void approve() {}
+    public LoanApplication approve(Long id) {
+        Optional<LoanApplication> loanApplication = findById(id);
+        if (loanApplication.isPresent()) {
+            LoanApplication loanApp = loanApplication.get();
+            loanApp.setStatus(LoanStatus.APPROVED);
+            return repository.save(loanApp);
+        }
 
-    public void reject() {}
+        throw new RuntimeException("Application was not found!");
+    }
+
+    public LoanApplication reject(Long id) {
+        Optional<LoanApplication> loanApplication = findById(id);
+        if (loanApplication.isPresent()) {
+            LoanApplication loanApp = loanApplication.get();
+            loanApp.setStatus(LoanStatus.DENIED);
+            return repository.save(loanApp);
+        }
+
+        throw new RuntimeException("Application was not found!");
+    }
 
     public Collection<LoanApplication> findAll() {
         return repository.findAll();

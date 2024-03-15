@@ -1,11 +1,12 @@
 package com.camunda.devrel.loanoriginationdemo.Services;
 
-import com.camunda.devrel.loanoriginationdemo.Controllers.LoanApplicationsController;
 import com.camunda.devrel.loanoriginationdemo.Data.LoanApplicantRepository;
 import com.camunda.devrel.loanoriginationdemo.Entities.LoanApplicant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class LoanApplicantService {
@@ -37,5 +38,9 @@ public class LoanApplicantService {
         }
 
         return matchedName;
+    }
+
+    public Optional<LoanApplicant> findById(Long id) {
+        return repository.findById(id);
     }
 }

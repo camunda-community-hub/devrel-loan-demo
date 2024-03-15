@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 
 @Service
@@ -30,6 +31,10 @@ public class CreditReportService {
         log.info("giving credit score of {} to {} {}", report.getCreditScore(), applicant.getGivenName(), applicant.getSurname());
 
         return repository.save(report);
+    }
+
+    public Optional<CreditReport> findById(Long id) {
+        return repository.findById(id);
     }
 
     private Integer generateRandomCreditScore() {
