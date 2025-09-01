@@ -39,7 +39,7 @@
 		<dependency>
 			<groupId>net.sizovs</groupId>
 			<artifactId>pipelinr</artifactId>
-			<version>0.8</version>
+			<version>0.11</version>
 		</dependency>
 		<dependency>
 			<groupId>io.camunda</groupId>
